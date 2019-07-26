@@ -1,0 +1,9 @@
+@mixin clearfix {
+	/* append a pseudo element after the element which will then clear these floats */
+	&::after {
+		/* specify content property (pseudo element will not appear otherwise), content should be empty b/c we do not want to see it */
+		content: "";
+		display: table;
+		clear: both;
+	}	
+}
