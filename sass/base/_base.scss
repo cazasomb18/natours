@@ -1,3 +1,6 @@
+/*by setting block sizing on each property on the page to inherit, we force each element to inherit box-sizing:border-box CSS property*/
+/* 
+* ==>universal selector applies styles to all elements on page*/
 *,
 *::after,
 *::before {
@@ -5,25 +8,30 @@
 	padding: 0;
 	box-sizing: inherit;
 }
-/*by setting block sizing on each property on the page to inherit, we force each element to inherit box-sizing:border-box CSS property*/
-/* 
-* ==>universal selector applies styles to all elements on page*/
 
 html {
-	//This defines what 1 rem is
-	font-size: 62.5%;
-}
-/*root font-size is 10px (since 62.5% = 10/16) if user doesn't change anything; if user changes font-size then that will be reflected in the browser according to that scale (10/16)*/
+	//This defines what 1 rem is if user doesn't change anything; if user changes font-size then that will be reflected in the browser according to the scale of 10/16
+	font-size: 62.5%;  //1 rem = 10px; 10px/16px === 62.5%
 
-body {
-	// font-family: "Lato", sans-serif;
-	// font-weight: 400;
-	// /*font-size: 16px;*/
-	// line-height: 1.7;
-	// color: $color-grey-dark;
-	// padding: 3rem;
-	box-sizing: border-box;
+	@include respond(tab-land) { // width < 1200?
+		font-size: 56.25%;  //1 rem = 9px, 9/16 === 56.25%
+	}
+
+	@include respond(tab-port) { // width < 900?
+		font-size: 50%;	 //1rem = 8px, 8/16 === 50%
+	}
+
+	@include respond(big-desktop) { // width >= 1800? 
+		font-size: 75%; //1rem = 12, 12/16 === 75%
+	}
 }
-/*
-box-sizing: border-box 
-	=> changes box model so borders and padding are not longer added to total width/height of element*/
+
+
+// box-sizing: border-box => changes box model so borders and padding are not longer added to total width/height of element
+body {
+	box-sizing: border-box;
+	padding: 3rem;
+	@include respond(tab-port) {
+		padding: 0;
+	}
+}
