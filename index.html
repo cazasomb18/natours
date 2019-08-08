@@ -3,11 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- responsive webdesign ^^^ does not work without this line of code -->
+        <!-- specifies the device width -->
         <meta http-equiv="X-UA-Compatible" content="ie-edge">
 
-        <link rel="stylesheet" href="css/icon-font.css">
-        
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+        <!-- <link rel="stylesheet" href="css/icon-font.css"> -->
+        <!-- you will uncomment this code ^^^ when you are ready to deploy -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="shortcut icon" type="image/png" href="img/favicon.png">
         
@@ -77,9 +80,28 @@
                     </div>
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
-                            <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+
+                            <!-- 300w/1000w tell browser what width the images are so it doesn't have to dl them -->
+                            <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                                sizes="max-width: 56.25em 20vw, (max-width: 37.5em) 30vw, 300px"
+                                alt="Photo1" 
+                                class="composition__photo composition__photo--p1" 
+                                src="img/nat-1-large.jpg">
+                            <!-- sizes-> tells browser which image to use according to viewport width -->
+                            <!-- 20vw imgW/screenW == % of viewport Width expressed as: 20vw --> 
+                            <!-- 300px => default if none of these conditions apply -->
+
+                            <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                                sizes="max-width: 56.25em 20vw, (max-width: 37.5em) 30vw, 300px"
+                                alt="Photo2" 
+                                class="composition__photo composition__photo--p2" 
+                                src="img/nat-2-large.jpg">
+
+                            <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                                sizes="max-width: 56.25em 20vw, (max-width: 37.5em) 30vw, 300px"
+                                alt="Photo3" 
+                                class="composition__photo composition__photo--p3"
+                                src="img/nat-3-large.jpg">
                         </div>
                     </div>
                 </div>
@@ -256,7 +278,10 @@
                 <div class="row">
                     <div class="story">
                         <figure class="story__shape">
-                            <img src="img/nat-8.jpg" alt="Person on a tour" class="story__img">
+                            <img srcset="img/nat-8.jpg, 300w"
+                                sizes="max-width: 1800px 17vw, (max-width: 1200px) 25vw, (max-width: 900px) 33vw, (max-width: 600px) 50vw, 300px" 
+                                alt="Person on a tour" 
+                                class="story__img">
                             <figcaption class="story__caption">Mary Smith</figcaption>
                         </figure>
                         <div class="story__text">
@@ -271,7 +296,10 @@
                 <div class="row">
                     <div class="story">
                         <figure class="story__shape">
-                            <img src="img/nat-9.jpg" alt="Person on a tour" class="story__img">
+                            <img srcset="img/nat-9.jpg, 300w" 
+                                sizes="max-width: 1800px 17vw, (max-width: 1200px) 25vw, (max-width: 900px) 33vw, (max-width: 600px) 50vw, 300px" 
+                                alt="Person on a tour" 
+                                class="story__img">
                             <figcaption class="story__caption">Jack Wilson</figcaption>
                         </figure>
                         <div class="story__text">
@@ -343,7 +371,8 @@
                 <picture class="footer__logo">
                     <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
                     <!-- if screen width is >37.5em then ^^ will be the image used (artDirection) 1x will be used for lowRes, 2x for hiRes (density switching)-->
-                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" src="img/logo-green-2x.png">
+                    <!-- ^^^ src is included with default file incase the browser can't read the srcset property  ^^^-->
                 </picture>
 
 
@@ -362,7 +391,7 @@
                 </div>
                 <div class="col-1-of-2">
                     <p class="footer__copyright">
-                        Built by <a href="#" class="footer__link">Clayton Smith</a> for his online course <a href="#" class="footer__link">Advanced CSS and SASS</a>. Copyright &copy;2019 by Clayton Smith. You are 100% allowed to use this webpage for both peronal and commercial use, but NOT to claim it as your own design.  A credit to the original author, Clayton Smith, is of course, highly appreciated!
+                        Built by <a href="#" class="footer__link">Clayton Smith</a> as an educational project for Jonas Schmedtman's online course <a href="#" class="footer__link">Advanced CSS and SASS</a>. Copyright &copy; by Jonas Schmedtman. You are 100% allowed to use this webpage for both personal and commercial use, but NOT to claim it as your own design.  A credit to the original author, Jonas Schmedtman, is of course, highly appreciated!
                     </p>
                 </div>
             </div>
@@ -371,8 +400,18 @@
         <div class="popup" id="popup">
             <div class="popup__content">
                 <div class="popup__left">
-                    <img src="img/nat-8.jpg" alt="Tour photo" class="popup__img">
-                    <img src="img/nat-9.jpg" alt="Tour photo" class="popup__img">
+
+                    <img srcset="img/nat-8.jpg, 300w" 
+                        sizes="max-width: 1800px 17vw, (max-width: 1200px) 25vw, (max-width: 900px) 33vw, (max-width: 600px) 50vw, 200px" 
+                        alt="Tour photo" 
+                        class="popup__img"
+                        src="img/nat-8.jpg">
+
+                    <img srcset="img/nat-9.jpg, 300w"
+                        sizes="max-width: 1800px 17vw, (max-width: 1200px) 25vw, (max-width: 900px) 33vw, (max-width: 600px) 50vw, 200px" 
+                        alt="Tour photo" 
+                        class="popup__img"
+                        src="img/nat-9.jpg">
                 </div>
                 <div class="popup__right">
                     <a href="#section-tours" class="popup__close">&times;</a>
@@ -441,5 +480,12 @@
                 </div>
             </div>
         </section> -->
+
+<!-- responsive images recap:
+
+    2 versions of the same image, one w/ 300px, another w/ 1000px
+    specified the width that each image has
+    used sized attr. to specify the vw at the breakpoints we set up media queries for
+    if none of the breakpoints apply we still set the src to default file incase no breakpoints apply -->
     </body>
 </html>

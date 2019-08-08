@@ -28,7 +28,7 @@ body {
 		}
 		/*
 		animation-delay: 3s;
-		animatino-iteration-count: 3; 
+		animation-iteration-count: 3;
 		 */
 	}
 
@@ -38,7 +38,7 @@ body {
 		font-weight: 700;
 		letter-spacing: 1.75rem;
 		animation: moveInRight 1s ease-out;
-		// margin-bottom: 6rem;
+		margin-bottom: 6rem;
 		@include respond(phone) {
 			letter-spacing: .5rem;
 		}
